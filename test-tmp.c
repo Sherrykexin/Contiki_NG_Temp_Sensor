@@ -33,8 +33,6 @@
 /**
  * \file
  *         A program that collects statistics from a network of Tmote Sky nodes
- * \author
- *         Wenqing Yan <wenqing.yan@it.uu.se>
  */
 /*---------------------------------------------------------------------------*/
 #include <stdio.h>
