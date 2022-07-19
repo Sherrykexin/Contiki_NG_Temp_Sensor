@@ -47,15 +47,12 @@ PROCESS_THREAD(botton_process, ev, data) {
 		 * event. In the case of a sensors_event, data will
 		 * point to the sensor that caused the event.
 		 * Here we wait until the button was pressed. */
-                  //printf("buttonnnnnnnnnn ");
 		/* Copy the string "button" into the packet buffer. */
                 PROCESS_WAIT_EVENT_UNTIL(data == &button_sensor);
                // printf("sky's button pressed");
 		nullnet_buf = (uint8_t *)&payload;
 		nullnet_len = sizeof(payload);
 		memcpy(nullnet_buf, &payload, sizeof(payload));
-               
-
 		/* Send the content of the packet buffer using the
 		 * broadcast handle. */
 		NETSTACK_NETWORK.output(NULL);
@@ -81,7 +78,6 @@ PROCESS_THREAD(temp_process, ev,data){
                converted_temp = temperature / 100;
                //printf("Temperature %d ºC\n ", converted_temp);
         	   if(converted_temp > temperature_Max){
-                       // printf("TTTTTTTTTTTTTTT %d ºC\n ", converted_temp);
 	   		nullnet_buf = (uint8_t *)&payload;
 	       		nullnet_len = sizeof(payload);
               		memcpy(nullnet_buf,&payload,sizeof(payload));         
@@ -89,7 +85,8 @@ PROCESS_THREAD(temp_process, ev,data){
 			}
                 
               
-		}      PROCESS_END();
+		}      
+	PROCESS_END();
 
 	
  }        
